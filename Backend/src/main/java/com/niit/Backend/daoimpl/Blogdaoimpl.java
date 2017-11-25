@@ -10,7 +10,7 @@ import com.niit.Backend.dao.Blogdao;
 import com.niit.Backend.model.Blog;
 
 
-@Repository("blogDAO")
+@Repository("Blogdao")
 public class Blogdaoimpl implements Blogdao 
 {
 	@Autowired

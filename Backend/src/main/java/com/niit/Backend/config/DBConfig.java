@@ -14,12 +14,14 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.Backend.dao.Blogdao;
-import com.niit.Backend.Blogdaoimpl;
-import com.niit.Backend.Blog;
+import com.niit.Backend.dao.Userdao;
+import com.niit.Backend.daoimpl.Userdaoimpl;
+import com.niit.Backend.daoimpl.Blogdaoimpl;
+import com.niit.Backend.model.Blog;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.collaboration")
+@ComponentScan("com.niit.Backend")
 
 public class DBConfig 
 {
@@ -65,4 +67,12 @@ public class DBConfig
 			System.out.println("Blog DAO object Created");
 			return new Blogdaoimpl(sessionFactory);
 		}
+		
+		
+		public Userdao getUserdao(SessionFactory sessionFactory)
+		{
+			System.out.println("User DAO object Created");
+			return new Userdaoimpl (sessionFactory);
+		}
+		
 }
