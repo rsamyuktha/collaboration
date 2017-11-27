@@ -14,6 +14,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.Backend.DAO.BlogDAO;
+import com.niit.Backend.DAOImpl.BlogDAOImpl;
 import com.niit.Backend.Domain.User;
 
 @Configuration
@@ -66,6 +68,18 @@ public class OracleDatabaseConfig
 		return transactionManager;
 	}
 
+	@Bean
+	public BlogDAO getBlogDAO(SessionFactory sessionFactory)
+	{
+		
+		return new BlogDAOImpl(sessionFactory);
+	}
+	
+	
+	
+	
+	
+	
 	
 
 }
