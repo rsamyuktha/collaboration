@@ -17,6 +17,7 @@ public class BlogDAOTestCase
 	{
 		System.out.println("Starting into Initializaed Blog Test case ");
 		
+		@SuppressWarnings("resource")
 		AnnotationConfigApplicationContext annotationConfigAppContext=new AnnotationConfigApplicationContext();
 		annotationConfigAppContext.scan("com.niit.Backend");
 		annotationConfigAppContext.refresh();
