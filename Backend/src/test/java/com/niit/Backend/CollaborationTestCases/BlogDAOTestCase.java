@@ -1,50 +1,51 @@
 package com.niit.Backend.CollaborationTestCases;
 
-import static org.junit.Assert.*;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import com.niit.Backend.DAO.BlogDAO;
+
 import com.niit.Backend.Domain.Blog;
 
 public class BlogDAOTestCase
 {
+	Logger log = LoggerFactory.getLogger(Blog.class);
 	
-	static BlogDAO blogDAO;
+	@Autowired
+	BlogDAO blogDAO;
 	
-	@BeforeClass
-	public static void initalize()
-	{
-		System.out.println("Starting into Initializaed Blog Test case ");
-		
-		@SuppressWarnings("resource")
-		AnnotationConfigApplicationContext annotationConfigAppContext=new AnnotationConfigApplicationContext();
-		annotationConfigAppContext.scan("com.niit.Backend");
-		annotationConfigAppContext.refresh();
-		
-		blogDAO=(BlogDAO)annotationConfigAppContext.getBean("blogDAO");
+	@Autowired
+	Blog blog;
 	
-		System.out.println("Ending into Initializaed Blog Test case ");
-	}
-
-	@Test
-	public void createBlogTest() 
+	@Autowired
+	AnnotationConfigApplicationContext context;
+	
+	public BlogDAOTestCase()
 	{
 		
-		System.out.println("Starting into Creating Blog Test case ");
-		Blog blog=new Blog();
-		
-		blog.setBlogId(1001);
-		blog.setBlogName("rupa");
-		blog.setBlogContent("rupa is studying in niit ");
-		blog.setUserid("rupa@gmail.com");
-		blog.setCreateDate(new java.util.Date());
-		blog.setStatus("NA");
-		blog.setLikes(0);
-		
-		assertTrue("Problem in blog creation",blogDAO.createBlog(blog));
-		
-		System.out.println("Ending... into  Create Blog Test case ");
-	}
+		context = new AnnotationConfigApplicationContext();
+		context.scan("com.niit.Backend");
+		context.refresh();
 
+		blogDAO = (BlogDAO) context.getBean("blogDAO");
+		blog = (Blog) context.getBean("blog");
+		
+	}
+	
+	
+	public void blogAdd()
+	{
+		log.info("Add blog Test started");
+		
+		blog.setDescription("this is blog testing");
+		blog.setUsername("samyuktha");
+		blog.setBlog_title("abc");
+		blog.setDate_time("DATE_TIME");
+		blogDAO.addBlog(blog);
+		log.info("Add blog Test end");
+	}
+	
 }

@@ -43,15 +43,15 @@ public class UserDAOTestCase
 	{
 		log.info("Add User Test started");
 		
-		user.setUsername("admin");
+		user.setUsername("samyuktha");
 		user.setFirst_name("Test");
 		user.setLast_name("");
 		user.setDob(new Date());
-		user.setGender('M');
-		user.setMail_id("admin@gmail.com");
-		user.setPassword("admin");
-		user.setStatus('N');
-		user.setRole("ADMIN");
+		user.setGender('F');
+		user.setMail_id("samyu@gmail.com");
+		user.setPassword("adm1");
+		user.setStatus('Y');
+		user.setRole("USER");
 		
 		userDAO.addUser(user);
 		log.info("Add User Test end");
@@ -60,7 +60,7 @@ public class UserDAOTestCase
 	public void getUserDetails()
 	{
 		log.info("Get User Details Started");
-		String userName = "testuser";
+		String userName = "samyuktha";
 		user = userDAO.getUser(userName);
 		System.out.println("Name - "+user.getFirst_name());
 		System.out.println("Date - "+user.getDob());
@@ -107,8 +107,8 @@ public class UserDAOTestCase
 	public static void main(String[] args) 
 	{
 		UserDAOTestCase tuser = new UserDAOTestCase();
-		tuser.testAdd();
-//		tuser.getUserDetails();
+	//	tuser.testAdd();
+tuser.getUserDetails();
 //		tuser.validateUser();
 //		tuser.deleteUser();
 //		tuser.list();
